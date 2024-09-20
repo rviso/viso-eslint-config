@@ -17,7 +17,7 @@
     "lint:fix": "eslint . --fix",
     "update-version": "lerna version",
     "sort-package": "npx sort-package-json",
-    "release": "lerna publish --force-publish=*"
+    "force-publish": "lerna publish --force-publish=*"
   },
   "devDependencies": {
     "@rviso/eslint-config": "workspace:^",

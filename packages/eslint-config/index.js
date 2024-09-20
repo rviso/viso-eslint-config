@@ -16,9 +16,6 @@ module.exports = {
       extends: ['@rviso/eslint-config-vue'],
       parserOptions: {
         parser: '@typescript-eslint/parser'
-      },
-      rules: {
-        'prettier/prettier': 'off'
       }
     }
   ]

@@ -16,6 +16,7 @@
   ],
   "main": "index.js",
   "files": [
+    "libs",
     "index.js"
   ],
   "engines": {

@@ -15,6 +15,7 @@
     "vue-html",
     "json",
     "jsonc",
+    "json5",
     "markdown",
     "yaml"
   ],

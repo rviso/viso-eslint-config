@@ -16,6 +16,7 @@
   ],
   "main": "index.js",
   "files": [
+    "libs",
     "index.js"
   ],
   "engines": {
@@ -25,14 +26,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "eslint": ">=8.0.1",
+    "eslint": ">=8.57.0",
+    "prettier": ">=3.0.0",
     "typescript": ">=4.9.5"
   },
   "dependencies": {
     "@rviso/eslint-config-standard": "^0.2.5",
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
-    "@typescript-eslint/parser": "^5.26.0",
-    "eslint": "^8.16.0"
+    "@stylistic/eslint-plugin-jsx": "^2.8.0",
+    "@stylistic/eslint-plugin-ts": "^2.8.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "@typescript-eslint/utils": "^8.2.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3"
   },
   "publishConfig": {
     "access": "public",
