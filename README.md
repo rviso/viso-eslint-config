@@ -61,8 +61,6 @@ If you are using Visual Studio Code, you can add the following settings to your 
 To make these settings take effect, you need to install the following plugins:
 
 - [ESLint - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier - Code formatter - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [Volta - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=volta.volta)
 
 ## License
 

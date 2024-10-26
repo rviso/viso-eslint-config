@@ -59,8 +59,6 @@ npm install eslint @viso/eslint-config@latest --save-dev
 为了使这些设置生效，您需要安装以下插件：
 
 - [ESLint - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier - Code formatter - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [Volta - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=volta.volta)
 
 ## Related
 
