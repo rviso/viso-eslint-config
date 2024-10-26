@@ -18,7 +18,7 @@ RViso's ESLint configurations. you can use this package to lint your JavaScript,
 To install this package, run the following command:
 
 ```bash
-npm install eslint @viso/eslint-config-standard @viso/eslint-config-typescript @viso/eslint-config-vue --save-dev
+npm install eslint @viso/eslint-config@latest --save-dev
 ```
 
 ## Usage

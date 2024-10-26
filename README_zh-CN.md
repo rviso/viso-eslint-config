@@ -16,7 +16,7 @@ RViso的ESLint配置。您可以使用此包来为您的JavaScript、TypeScript�
 要安装这个包，请运行以下命令：
 
 ```bash
-npm install eslint @viso/eslint-config --save-dev
+npm install eslint @viso/eslint-config@latest --save-dev
 ```
 
 ## Usage
