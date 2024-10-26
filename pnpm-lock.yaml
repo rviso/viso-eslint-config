@@ -26,13 +26,13 @@ importers:
   packages/eslint-config:
     dependencies:
       '@viso/eslint-config-standard':
-        specifier: ^0.3.4
+        specifier: ^0.3.5
         version: link:../standard
       '@viso/eslint-config-typescript':
-        specifier: ^0.3.4
+        specifier: ^0.3.5
         version: link:../typescript
       '@viso/eslint-config-vue':
-        specifier: ^0.3.4
+        specifier: ^0.3.5
         version: link:../vue
       eslint:
         specifier: ^8.57.0
@@ -134,7 +134,7 @@ importers:
         specifier: ^8.8.0
         version: 8.11.0(eslint@8.57.0)(typescript@4.9.5)
       '@viso/eslint-config-standard':
-        specifier: ^0.3.4
+        specifier: ^0.3.5
         version: link:../standard
       eslint:
         specifier: ^8.57.0
@@ -164,7 +164,7 @@ importers:
   packages/vue:
     dependencies:
       '@viso/eslint-config-standard':
-        specifier: ^0.3.4
+        specifier: ^0.3.5
         version: link:../standard
       eslint:
         specifier: ^8.16.0
