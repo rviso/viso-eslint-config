@@ -61,6 +61,16 @@ module.exports = {
 
 
     // -----------------------------------------------------
+    // #region括号规则
+    // -----------------------------------------------------
+
+    /** 强制在箭头函数体周围使用大括号 */
+    '@stylistic/js/no-extra-parens': ['error', 'functions'],
+    // #endregion
+    // -----------------------------------------------------
+
+
+    // -----------------------------------------------------
     // #region 分号规则
     // -----------------------------------------------------
 
@@ -140,6 +150,15 @@ module.exports = {
       }
     ],
 
+    /** 强制在关键字前后使用一致的空格 */
+    '@stylistic/js/keyword-spacing': [
+      'error',
+      {
+        before: true,
+        after: true
+      }
+    ],
+
     /** 强制在对象大括号中使用一致的空格 */
     '@stylistic/js/object-curly-spacing': [
       'error',
@@ -151,9 +170,9 @@ module.exports = {
     '@stylistic/js/space-before-function-paren': [
       'error',
       {
-        anonymous: 'never',
+        anonymous: 'always',
         named: 'never',
-        asyncArrow: 'never'
+        asyncArrow: 'always'
       }
     ],
 
@@ -206,8 +225,9 @@ module.exports = {
     '@stylistic/js/array-element-newline': [
       'error',
       {
-        ArrayExpression: 'consistent',
-        ArrayPattern: { minItems: null }
+        consistent: true,
+        multiline: true,
+        minItems: 3
       }
     ],
 
@@ -240,9 +260,26 @@ module.exports = {
     '@stylistic/js/object-curly-newline': [
       'error',
       {
-        multiline: true,
-        consistent: true,
-        minProperties: 3
+        ObjectExpression: {
+          multiline: true,
+          minProperties: 4,
+          consistent: true
+        },
+        ObjectPattern: {
+          multiline: true,
+          minProperties: 4,
+          consistent: true
+        },
+        ImportDeclaration: {
+          multiline: true,
+          // minProperties: 4,
+          consistent: true
+        },
+        ExportDeclaration: {
+          multiline: true,
+          // minProperties: 4,
+          consistent: true
+        }
       }
     ],
 
@@ -297,9 +334,16 @@ module.exports = {
       'warn',
       {
         groups: [
-          ['+', '-', '*', '/', '%', '**'],
-          ['&', '|', '^', '~', '<<', '>>', '>>>'],
-          ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+          [
+            '==',
+            '!=',
+            '===',
+            '!==',
+            '>',
+            '>=',
+            '<',
+            '<='
+          ],
           ['&&', '||'],
           ['in', 'instanceof']
         ],

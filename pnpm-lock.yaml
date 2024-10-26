@@ -7,7 +7,7 @@ settings:
 importers:
   .:
     devDependencies:
-      '@rviso/eslint-config':
+      '@viso/eslint-config':
         specifier: workspace:^
         version: link:packages/eslint-config
       eslint:
@@ -25,13 +25,13 @@ importers:
 
   packages/eslint-config:
     dependencies:
-      '@rviso/eslint-config-standard':
+      '@viso/eslint-config-standard':
         specifier: ^0.3.1
         version: link:../standard
-      '@rviso/eslint-config-typescript':
+      '@viso/eslint-config-typescript':
         specifier: ^0.3.1
         version: link:../typescript
-      '@rviso/eslint-config-vue':
+      '@viso/eslint-config-vue':
         specifier: ^0.3.1
         version: link:../vue
       eslint:
@@ -100,7 +100,7 @@ importers:
 
   packages/typescript:
     dependencies:
-      '@rviso/eslint-config-standard':
+      '@viso/eslint-config-standard':
         specifier: ^0.3.1
         version: link:../standard
       '@stylistic/eslint-plugin-jsx':
@@ -136,7 +136,7 @@ importers:
 
   packages/vue:
     dependencies:
-      '@rviso/eslint-config-standard':
+      '@viso/eslint-config-standard':
         specifier: ^0.3.1
         version: link:../standard
       eslint:

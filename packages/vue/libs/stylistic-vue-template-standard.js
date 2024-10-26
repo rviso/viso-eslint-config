@@ -46,7 +46,11 @@ module.exports = {
     'vue/space-unary-ops': ['error', { words: true, nonwords: false }],
 
     // 1tbs
-    'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+    'vue/brace-style': [
+      'error',
+      'stroustrup',
+      { allowSingleLine: true }
+    ],
 
     // 禁止不规则的空白
     'vue/no-irregular-whitespace': 'error',
@@ -56,7 +60,8 @@ module.exports = {
 
     // 强制在对象字面量的键和值之间使用一致的间距
     'vue/key-spacing': [
-      'error', {
+      'error',
+      {
         beforeColon: false,
         afterColon: true,
         mode: 'strict'
@@ -73,7 +78,8 @@ module.exports = {
     // -----------------------------------------------------
     // 最大长度限制
     'vue/max-len': [
-      'error', {
+      'error',
+      {
         code: 120,
         template: 120,
         tabWidth: 2,
@@ -98,14 +104,15 @@ module.exports = {
           max: 3
         },
         multiline: {
-          max: 2
+          max: 1
         }
       }
     ],
 
     // 强制第一个属性的位置
     'vue/first-attribute-linebreak': [
-      'error', {
+      'error',
+      {
         singleline: 'beside',
         multiline: 'below'
       }

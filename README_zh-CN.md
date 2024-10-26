@@ -2,7 +2,7 @@
 
 [English](./README.md) | **中文**
 
-![npm](https://img.shields.io/npm/v/@rviso/eslint-config)
+![npm](https://img.shields.io/npm/v/@viso/eslint-config)
 ![node](https://img.shields.io/badge/node-%5E18.0.0-bluegreen)
 ![author](https://img.shields.io/badge/author-lingann-purple)
 ![license](https://img.shields.io/github/license/rviso/rviso-eslint)
@@ -16,7 +16,7 @@ RViso的ESLint配置。您可以使用此包来为您的JavaScript、TypeScript�
 要安装这个包，请运行以下命令：
 
 ```bash
-npm install eslint @rviso/eslint-config --save-dev
+npm install eslint @viso/eslint-config --save-dev
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ npm install eslint @rviso/eslint-config --save-dev
 
 ```json
 {
-  "extends": ["@rviso/eslint-config"]
+  "extends": ["@viso/eslint-config"]
 }
 ```
 
@@ -64,4 +64,4 @@ npm install eslint @rviso/eslint-config --save-dev
 
 ## Related
 
-- [@rviso/eslint-config](https://www.npmjs.com/package/@rviso/eslint-config) - RViso 的 ESLint Vue 配置。
+- [@viso/eslint-config](https://www.npmjs.com/package/@viso/eslint-config) - RViso 的 ESLint Vue 配置。

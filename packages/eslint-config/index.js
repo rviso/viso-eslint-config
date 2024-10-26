@@ -2,18 +2,18 @@
 
 module.exports = {
   root: true, // 作用于当前目录及其子目录
-  extends: ['@rviso/eslint-config-standard'],
+  extends: ['@viso/eslint-config-standard'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
-      extends: ['@rviso/eslint-config-typescript'],
+      extends: ['@viso/eslint-config-typescript'],
       parserOptions: {
         parser: '@typescript-eslint/parser'
       }
     },
     {
       files: ['*.vue'],
-      extends: ['@rviso/eslint-config-vue'],
+      extends: ['@viso/eslint-config-vue'],
       parserOptions: {
         parser: '@typescript-eslint/parser'
       }

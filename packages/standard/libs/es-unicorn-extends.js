@@ -7,7 +7,7 @@ module.exports = {
     // -----------------------------------------------------
 
     /** 禁止嵌套三元表达式 */
-    'unicorn/no-nested-ternary': 'error',
+    'unicorn/no-nested-ternary': 'warn',
 
     /** 强制自定义错误信息 */
     'unicorn/error-message': 'error',

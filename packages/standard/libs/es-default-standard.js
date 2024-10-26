@@ -69,7 +69,7 @@ module.exports = {
     ],
 
     /** 防止变量声明覆盖外部作用域中的变量 */
-    'no-shadow': 'warn',
+    'no-shadow': 'off',
 
     /** 禁止删除变量 */
     'no-delete-var': 'error',
@@ -213,7 +213,8 @@ module.exports = {
 
     /** 推荐使用解构赋值 */
     'prefer-destructuring': [
-      'error', {
+      'error',
+      {
         VariableDeclarator: {
           array: false,
           object: false

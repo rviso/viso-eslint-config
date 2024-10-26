@@ -1,0 +1,28 @@
+{
+  "name": "@gl/eslint-config-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@8.1.0",
+  "author": "Mysteel Web",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "sort-package": "npx sort-package-json",
+    "update-version": "lerna version",
+    "force-publish": "lerna publish --force-publish=*"
+  },
+  "devDependencies": {
+
+    "@gl/eslint-config": "workspace:^",
+    "eslint": "^8.57.0",
+    "eslint-plugin-mysteel-check": "workspace:^",
+    "lerna": "^8.1.8",
+    "prettier": "^3.3.3",
+    "typescript": "^4.9.5",
+    "vue": "^3.4.37"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

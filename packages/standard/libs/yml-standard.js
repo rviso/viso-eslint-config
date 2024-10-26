@@ -8,7 +8,8 @@ module.exports = {
   extends: ['plugin:yml/standard'],
   rules: {
     'yml/quotes': [
-      'error', {
+      'error',
+      {
         prefer: 'single',
         avoidEscape: false
       }

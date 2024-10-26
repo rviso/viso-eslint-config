@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "private": true,
+  "packageManager": "pnpm@8.1",
+  "structure": {
+    "a": 1,
+    "b": "2",
+    "c": {
+      "d": 3,
+      "e": "4"
+    }
+  },
+  "version": "0.1.0"
+}

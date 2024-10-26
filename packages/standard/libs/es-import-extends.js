@@ -1,5 +1,6 @@
 module.exports = {
   extends: ['plugin:import/recommended'],
+  plugins: ['import-newlines'],
   rules: {
     // -----------------------------------------------------
     // #region import 规则
@@ -7,11 +8,17 @@ module.exports = {
 
     /** 强制对 import 语句中的成员进行排序 */
     'sort-imports': [
-      'error', {
+      'off',
+      {
         ignoreCase: false,
         ignoreDeclarationSort: true,
         ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+        memberSyntaxSortOrder: [
+          'none',
+          'all',
+          'multiple',
+          'single'
+        ],
         allowSeparatedGroups: false
       }
     ],
@@ -52,8 +59,26 @@ module.exports = {
     'import/no-named-as-default': 'off',
 
     /** 禁止使用命名空间导出 */
-    'import/namespace': 'off'
+    'import/namespace': 'off',
 
+
+    // #endregion
+    // -----------------------------------------------------
+
+    // -----------------------------------------------------
+    // #region import-newlines 规则
+    // -----------------------------------------------------
+
+    /** 强制 import 语句换行 */
+    'import-newlines/enforce': [
+      'error',
+      {
+        items: 3,
+        'max-len': 120,
+        semi: false,
+        allowBlankLines: true
+      }
+    ]
 
     // #endregion
     // -----------------------------------------------------

@@ -1,4 +1,4 @@
-# @rviso/eslint-config-vue
+# @viso/eslint-config-vue
 
 专为Vue项目提供的ESLint配置。
 
@@ -7,7 +7,7 @@
 要安装这个包，请运行以下命令：
 
 ```bash
-npm install @rviso/eslint-config-vue --save-dev
+npm install @viso/eslint-config-vue --save-dev
 
 ```
 
@@ -17,6 +17,6 @@ npm install @rviso/eslint-config-vue --save-dev
 
 ```js
 module.exports = {
-  extends: ['@rviso/eslint-config-vue'],
+  extends: ['@viso/eslint-config-vue'],
 }
 ```

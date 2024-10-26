@@ -5,6 +5,7 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        // tab 宽度
         tabWidth: 2,
         // 使用空格缩进
         useTabs: false,
@@ -18,6 +19,7 @@ module.exports = {
         singleQuote: true,
         // 禁止末尾分号
         semi: false
+
       }
     ]
   }

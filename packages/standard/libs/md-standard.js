@@ -6,7 +6,8 @@ module.exports = {
     }
   ],
   plugins: ['markdown'],
-  extends: ['plugin:markdown/recommended'],
+  extends: ['plugin:markdown/recommended-legacy'],
   rules: {
+    'no-console': 'off'
   }
 }

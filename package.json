@@ -20,7 +20,7 @@
     "lerna-publish": "lerna publish --force-publish=*"
   },
   "devDependencies": {
-    "@rviso/eslint-config": "workspace:^",
+    "@viso/eslint-config": "workspace:^",
     "eslint": "^8.57.0",
     "lerna": "^8.1.3",
     "prettier": "^3.3.1",

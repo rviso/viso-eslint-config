@@ -1,4 +1,4 @@
-# @rviso/eslint-config
+# @viso/eslint-config
 
 提供快速的 项目 ESLint 配置。
 
@@ -7,7 +7,7 @@
 要安装这个包，请运行以下命令：
 
 ```bash
-npm install @rviso/eslint-config --save-dev
+npm install @viso/eslint-config --save-dev
 
 ```
 
@@ -17,6 +17,6 @@ npm install @rviso/eslint-config --save-dev
 
 ```js
 module.exports = {
-  extends: ['@rviso/eslint-config'],
+  extends: ['@viso/eslint-config'],
 }
 ```

@@ -1,4 +1,4 @@
-# @rviso/eslint-config-typescript
+# @viso/eslint-config-typescript
 
 提供基础的 TypeScript 项目 ESLint 配置。
 
@@ -7,7 +7,7 @@
 要安装这个包，请运行以下命令：
 
 ```bash
-npm install @rviso/eslint-config-typescript --save-dev
+npm install @viso/eslint-config-typescript --save-dev
 
 ```
 
@@ -17,6 +17,6 @@ npm install @rviso/eslint-config-typescript --save-dev
 
 ```js
 module.exports = {
-  extends: ['@rviso/eslint-config-typescript'],
+  extends: ['@viso/eslint-config-typescript'],
 }
 ```

@@ -3,8 +3,6 @@ module.exports = {
   plugins: ['@stylistic/ts'],
   extends: ['plugin:@stylistic/ts/all-extends', 'plugin:@typescript-eslint/stylistic'],
   rules: {
-
-
     // -----------------------------------------------------
     // #region 缩进规则
     // -----------------------------------------------------
@@ -24,16 +22,7 @@ module.exports = {
     // ----------------------------------------------------
 
     /** 禁止不必要的括号 */
-    '@stylistic/ts/no-extra-parens': [
-      'error',
-      'all',
-      {
-        conditionalAssign: false,
-        nestedBinaryExpressions: false,
-        ignoreJSX: 'multi-line'
-      }
-    ],
-
+    '@stylistic/ts/no-extra-parens': ['error', 'functions'],
 
     // #endregion
     // -----------------------------------------------------
@@ -106,7 +95,7 @@ module.exports = {
     // #region 空格规则
     // -----------------------------------------------------
 
-    /** 强制在冒号后使用一致的空格 */
+    /** 要求类型注释周围有一致的间距 */
     '@stylistic/ts/type-annotation-spacing': [
       'error',
       {
@@ -165,6 +154,15 @@ module.exports = {
       }
     ],
 
+    /** 强制在关键字前后使用一致的空格 */
+    '@stylistic/ts/keyword-spacing': [
+      'error',
+      {
+        before: true,
+        after: true
+      }
+    ],
+
     /** 强制在对象大括号中使用一致的空格 */
     '@stylistic/ts/object-curly-spacing': [
       'error',
@@ -175,9 +173,9 @@ module.exports = {
     '@stylistic/ts/space-before-function-paren': [
       'error',
       {
-        anonymous: 'never',
+        anonymous: 'always',
         named: 'never',
-        asyncArrow: 'never'
+        asyncArrow: 'always'
       }
     ],
 
@@ -215,9 +213,26 @@ module.exports = {
     '@stylistic/ts/object-curly-newline': [
       'error',
       {
-        multiline: true,
-        consistent: true,
-        minProperties: 3
+        ObjectExpression: {
+          multiline: true,
+          minProperties: 4,
+          consistent: true
+        },
+        ObjectPattern: {
+          multiline: true,
+          minProperties: 4,
+          consistent: true
+        },
+        ImportDeclaration: {
+          multiline: true,
+          // minProperties: 4,
+          consistent: true
+        },
+        ExportDeclaration: {
+          multiline: true,
+          // minProperties: 4,
+          consistent: true
+        }
       }
     ],
 

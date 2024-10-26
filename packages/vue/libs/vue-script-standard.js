@@ -21,7 +21,13 @@ module.exports = {
     'vue/define-macros-order': [
       'error',
       {
-        order: ['defineOptions', 'defineModel', 'defineProps', 'defineEmits', 'defineSlots'],
+        order: [
+          'defineOptions',
+          'defineModel',
+          'defineProps',
+          'defineEmits',
+          'defineSlots'
+        ],
         defineExposeLast: true
       }
     ],
@@ -168,7 +174,12 @@ module.exports = {
     // -----------------------------------------------------
 
     // 禁止使用特定的语法
-    'vue/no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement']
+    'vue/no-restricted-syntax': [
+      'error',
+      'DebuggerStatement',
+      'LabeledStatement',
+      'WithStatement'
+    ]
 
     // #endregion
     // -----------------------------------------------------

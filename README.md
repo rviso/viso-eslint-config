@@ -2,7 +2,7 @@
 
 **English** | [中文](./README_zh-CN.md)
 
-![npm](https://img.shields.io/npm/v/@rviso/eslint-config)
+![npm](https://img.shields.io/npm/v/@viso/eslint-config)
 ![node](https://img.shields.io/badge/node-%5E18.0.0-bluegreen)
 ![author](https://img.shields.io/badge/author-lingann-purple)
 ![license](https://img.shields.io/github/license/rviso/rviso-eslint)
@@ -16,7 +16,7 @@ RViso's ESLint configurations. you can use this package to lint your JavaScript,
 To install this package, run the following command:
 
 ```bash
-npm install eslint @rviso/eslint-config-standard @rviso/eslint-config-typescript @rviso/eslint-config-vue --save-dev
+npm install eslint @viso/eslint-config-standard @viso/eslint-config-typescript @viso/eslint-config-vue --save-dev
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ Create a `.eslintrc` file in the root directory of your project with the followi
 
 ```json
 {
-  "extends": ["@rviso/eslint-config"],
+  "extends": ["@viso/eslint-config"],
 }
 ```
 
@@ -68,4 +68,4 @@ To make these settings take effect, you need to install the following plugins:
 
 ## Related
 
-- [@rviso/eslint-config](https://www.npmjs.com/package/@rviso/eslint-config) - RViso's ESLint Vue configurations.
+- [@viso/eslint-config](https://www.npmjs.com/package/@viso/eslint-config) - RViso's ESLint Vue configurations.

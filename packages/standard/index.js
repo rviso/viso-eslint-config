@@ -53,8 +53,18 @@ module.exports = {
   ],
   overrides: [
     {
-      files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
-      extends: ['./libs/stylistic-standard', './libs/es-default-standard', './libs/es-import-standard', './libs/es-unicorn-standard'],
+      files: [
+        '**/*.js',
+        '**/*.cjs',
+        '**/*.mjs'
+      ],
+      extends: [
+        './libs/stylistic-standard',
+        './libs/es-default-standard',
+        './libs/es-import-extends',
+        './libs/es-unicorn-extends',
+        './libs/newline-destructuring-extends'
+      ],
       parser: '@babel/eslint-parser',
       parserOptions: {
         sourceType: 'module',
@@ -63,14 +73,29 @@ module.exports = {
     },
     {
       files: ['**/*.jsx'],
-      extends: ['./libs/stylistic-standard', './libs/es-default-standard', './libs/es-import-standard', './libs/es-unicorn-standard'],
+      extends: [
+        './libs/stylistic-standard',
+        './libs/es-default-standard',
+        './libs/es-import-extends',
+        './libs/es-unicorn-extends',
+        './libs/newline-destructuring-extends'
+      ],
       rules: {
         '@stylistic/js/no-extra-parens': 'off'
       }
     },
     {
       files: ['**/*.vue'],
-      extends: ['./libs/stylistic-standard', './libs/es-default-standard', './libs/es-import-standard', './libs/es-unicorn-standard']
+      extends: [
+        './libs/stylistic-standard',
+        './libs/es-default-standard',
+        './libs/es-import-extends',
+        './libs/es-unicorn-extends',
+        './libs/newline-destructuring-extends'
+      ],
+      rules: {
+        '@stylistic/js/max-len': 'off'
+      }
     },
     {
       files: ['scripts/**/*.*', 'cli.*'],
@@ -79,7 +104,12 @@ module.exports = {
       }
     },
     {
-      files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
+      files: [
+        '*.test.ts',
+        '*.test.js',
+        '*.spec.ts',
+        '*.spec.js'
+      ],
       rules: {
         'no-unused-expressions': 'off' // 测试文件中可以使用 expect
       }
@@ -95,7 +125,15 @@ module.exports = {
       extends: ['./libs/package-json-standard']
     },
     {
-      files: ['**/*.json', '**/*.json5', '**/*.jsonc', '**/*.eslintrc', '**/*.babelrc', '**/*.stylelintrc', '**/*.prettierrc'],
+      files: [
+        '**/*.json',
+        '**/*.json5',
+        '**/*.jsonc',
+        '**/*.eslintrc',
+        '**/*.babelrc',
+        '**/*.stylelintrc',
+        '**/*.prettierrc'
+      ],
       parser: 'jsonc-eslint-parser',
       extends: ['./libs/json-standard']
     },

@@ -1,4 +1,4 @@
-# @rviso/eslint-config-standard
+# @viso/eslint-config-standard
 
 提供基础的 ESLint 配置。
 
@@ -7,13 +7,13 @@
 要安装这个包，请运行以下命令：
 
 ```bash
-npm install @rviso/eslint-config-standard --save-dev
+npm install @viso/eslint-config-standard --save-dev
 ```
 
 或者使用 [yarn](https://yarnpkg.com)：
 
 ```bash
-yarn add @rviso/eslint-config-standard --dev
+yarn add @viso/eslint-config-standard --dev
 ```
 
 ## 使用
@@ -22,6 +22,6 @@ yarn add @rviso/eslint-config-standard --dev
 
 ```js
 module.exports = {
-  extends: ['@rviso/eslint-config-standard'],
+  extends: ['@viso/eslint-config-standard'],
 }
 ```
