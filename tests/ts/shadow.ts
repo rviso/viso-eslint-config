@@ -1,3 +1,5 @@
+// Code Generated with yarn api-extractor
+
 export interface Shadow {
   'shadow-color': string
 

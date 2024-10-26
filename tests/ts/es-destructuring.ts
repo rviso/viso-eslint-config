@@ -14,12 +14,9 @@ const obj2 = {
   id: 1
 }
 
-
-
 const {
   id,
   phone,
-  ...rest 
+  ...rest
 } = obj
-
 

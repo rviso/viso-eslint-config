@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 export interface Test {
   id: number
@@ -6,6 +6,12 @@ export interface Test {
   description: string
   createdAt: Date
   updatedAt: Date
+}
+
+export interface OptionProps extends Omit<Test, 'id'> {
+
+  /** Save for customize data */
+  [prop: string]: any
 }
 
 const obj = {

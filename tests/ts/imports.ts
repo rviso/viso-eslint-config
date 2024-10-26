@@ -1,10 +1,9 @@
 
-
 import {
   computed,
-  watch,
+  reactive,
   ref,
-  reactive
+  watch 
 } from 'vue'
 
 const state = reactive({
@@ -19,4 +18,11 @@ watch(count, (newVal, oldVal) => {
 
 const double = computed(() => count.value * 2)
 
-console.log(double.value)
+console.log( double.value)
+
+const x1 = 5 // comment
+const x12 = 5
+
+/* multiline
+ * comment
+ */

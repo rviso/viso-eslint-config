@@ -7,7 +7,6 @@ const obj = {
   id: 1
 }
 
-
 const { name, age } = obj
 
 const { id, phone, ...rest } = obj
