@@ -1,4 +1,6 @@
-# RViso ESLint Config
+> 注意，@rviso/eslint-config 已经迁移到 @viso/eslint-config，如果你正在使用 @rviso/eslint-config，请尽快迁移到 @viso/eslint-config。
+
+# Viso ESLint Config
 
 **English** | [中文](./README_zh-CN.md)
 
@@ -25,7 +27,7 @@ Create a `.eslintrc` file in the root directory of your project with the followi
 
 ```json
 {
-  "extends": ["@viso/eslint-config"],
+  "extends": ["@viso/eslint-config"]
 }
 ```
 
