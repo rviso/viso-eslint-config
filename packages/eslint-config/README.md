@@ -1,5 +1,3 @@
-> Note: @rviso/eslint-config has been migrated to @viso/eslint-config. If you're currently using @rviso/eslint-config, please switch to @viso/eslint-config as soon as possible.
-
 # Viso ESLint Config
 
 **English** | [中文](https://github.com/rviso/viso-eslint-config/blob/master/README_zh-CN.md)
