@@ -1,15 +1,15 @@
 {
-  "name": "@rviso/eslint-config-vue",
+  "name": "@viso/eslint-config-vue",
   "version": "0.3.1",
   "description": "专为Vue项目提供的ESLint配置",
   "author": "Lingann Wang",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rviso/rviso-eslint-config.git"
+    "url": "git+https://github.com/rviso/viso-eslint-config.git"
   },
   "bugs": {
-    "url": "https://github.com/rviso/rviso-eslint-config/issues"
+    "url": "https://github.com/rviso/viso-eslint-config/issues"
   },
   "keywords": [
     "eslint-config"
