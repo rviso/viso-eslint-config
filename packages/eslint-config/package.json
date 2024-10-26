@@ -1,6 +1,6 @@
 {
   "name": "@viso/eslint-config",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "提供快速的项目 ESLint 配置",
   "author": "Lingann Wang",
   "license": "MIT",
@@ -30,9 +30,9 @@
     "typescript": ">=4.9.5"
   },
   "dependencies": {
-    "@viso/eslint-config-standard": "^0.3.1",
-    "@viso/eslint-config-typescript": "^0.3.1",
-    "@viso/eslint-config-vue": "^0.3.1",
+    "@viso/eslint-config-standard": "^0.3.2",
+    "@viso/eslint-config-typescript": "^0.3.2",
+    "@viso/eslint-config-vue": "^0.3.2",
     "eslint": "^8.57.0"
   },
   "publishConfig": {
