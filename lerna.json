@@ -5,7 +5,7 @@
   "command": {
     "publish": {
       "allowBranch": ["master"],
-      "message": "chore(release): publish",
+      "message": "chore(release): publish %s",
       "registry": "https://registry.npmjs.org/"
     }
   },
