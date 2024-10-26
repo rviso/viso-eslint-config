@@ -1,6 +1,20 @@
 module.exports = {
-  extends: ['plugin:import/recommended'],
-  plugins: ['import-newlines'],
+  extends: ['plugin:import/typescript'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.mjs',
+          '.ts',
+          '.tsx',
+          '.d.ts',
+          '.mts'
+        ]
+      }
+    }
+  },
   rules: {
     // -----------------------------------------------------
     // #region import 规则
@@ -60,7 +74,6 @@ module.exports = {
 
     /** 禁止使用命名空间导出 */
     'import/namespace': 'off',
-
 
     // #endregion
     // -----------------------------------------------------

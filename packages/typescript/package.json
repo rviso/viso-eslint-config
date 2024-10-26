@@ -38,6 +38,7 @@
     "@typescript-eslint/utils": "^8.8.0",
     "@viso/eslint-config-standard": "^0.3.1",
     "eslint": "^8.57.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-canonical": "^5.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-import-newlines": "^1.4.0",

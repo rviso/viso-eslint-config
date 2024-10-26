@@ -75,14 +75,30 @@ module.exports = {
       files: ['**/*.jsx'],
       extends: [
         './libs/stylistic-standard',
+        './libs/stylistic-react-jsx-standard',
         './libs/es-default-standard',
         './libs/es-import-extends',
         './libs/es-unicorn-extends',
         './libs/newline-destructuring-extends'
       ],
       rules: {
+        'import/named': 'off',
         '@stylistic/js/no-extra-parens': 'off'
       }
+    },
+    {
+      files: ['**/*.d.ts'],
+      rules: {
+        'import/no-duplicates': 'off' // 有时候会有重复的 import
+      }
+    },
+    {
+      files: ['**/*.ts'],
+      extends: ['./libs/es-import-extends']
+    },
+    {
+      files: ['**/*.tsx'],
+      extends: ['./libs/es-import-extends', './libs/stylistic-react-jsx-standard']
     },
     {
       files: ['**/*.vue'],
@@ -141,12 +157,6 @@ module.exports = {
       files: ['**/*.yaml', '**/*.yml'],
       parser: 'yaml-eslint-parser',
       extends: ['./libs/yml-standard']
-    },
-    {
-      files: ['**/*.d.ts'],
-      rules: {
-        'import/no-duplicates': 'off' // 有时候会有重复的 import
-      }
     },
     {
       files: ['**/*.md'],

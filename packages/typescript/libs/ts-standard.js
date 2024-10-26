@@ -1,22 +1,7 @@
 'use strict'
 
 module.exports = {
-  extends: ['plugin:import/typescript', 'plugin:@typescript-eslint/strict'],
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: [
-          '.js',
-          '.jsx',
-          '.mjs',
-          '.ts',
-          '.tsx',
-          '.d.ts',
-          '.mts'
-        ]
-      }
-    }
-  },
+  extends: ['plugin:@typescript-eslint/strict'],
   plugins: ['@typescript-eslint'],
   overrides: [
     {
@@ -61,7 +46,6 @@ module.exports = {
     // #endregion
     // -----------------------------------------------------
 
-
     // -----------------------------------------------------
     // #region 命名规则
     // -----------------------------------------------------
@@ -95,13 +79,21 @@ module.exports = {
     // #endregion
     // -----------------------------------------------------
 
-
     // -----------------------------------------------------
     // #region 注释规则
     // -----------------------------------------------------
     /** 禁止使用 @ts-ignore 注释 */
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
 
+    // #endregion
+    // -----------------------------------------------------
+
+    // -----------------------------------------------------
+    // #region 类型定义规则
+    // -----------------------------------------------------
+
+    /** 一致索引对象样式 */
+    '@typescript-eslint/consistent-indexed-object-style': 'off',
 
     // #endregion
     // -----------------------------------------------------
@@ -118,7 +110,6 @@ module.exports = {
 
     /** 禁止空对象类型 */
     '@typescript-eslint/no-empty-object-type': 'off',
-
 
     // #endregion
     // -----------------------------------------------------
@@ -138,7 +129,6 @@ module.exports = {
     // #endregion
     // -----------------------------------------------------
 
-
     // -----------------------------------------------------
     // #region 迭代器规则
     // -----------------------------------------------------
@@ -154,6 +144,7 @@ module.exports = {
     // -----------------------------------------------------
 
     'no-empty-function': 'off',
+
     '@typescript-eslint/no-empty-function': [
       'error',
       {
@@ -166,10 +157,8 @@ module.exports = {
       }
     ],
 
-
     // #endregion
     // -----------------------------------------------------
-
 
     // -----------------------------------------------------
     // #region 类规则

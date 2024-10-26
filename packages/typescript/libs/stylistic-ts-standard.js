@@ -1,7 +1,7 @@
 
 module.exports = {
   plugins: ['@stylistic/ts', '@stylistic/js'],
-  extends: ['plugin:@stylistic/ts/all-extends', 'plugin:@typescript-eslint/stylistic'],
+  extends: ['plugin:@stylistic/ts/all-extends'],
   rules: {
     // -----------------------------------------------------
     // #region 缩进规则
@@ -106,6 +106,14 @@ module.exports = {
             after: true
           }
         }
+      }
+    ],
+
+    /** 无多重空格 */
+    '@stylistic/js/no-multi-spaces': [
+      'error',
+      {
+        ignoreEOLComments: false
       }
     ],
 

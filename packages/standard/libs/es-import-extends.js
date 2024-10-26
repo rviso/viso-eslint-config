@@ -1,6 +1,21 @@
 module.exports = {
-  extends: ['plugin:import/recommended'],
-  plugins: ['import-newlines'],
+  extends: ['plugin:import/typescript', 'plugin:import/recommended'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.mjs',
+          '.ts',
+          '.tsx',
+          '.d.ts',
+          '.mts'
+        ]
+      }
+    }
+  },
+  plugins: ['import-newlines', 'simple-import-sort'],
   rules: {
     // -----------------------------------------------------
     // #region import 规则
@@ -28,6 +43,9 @@ module.exports = {
 
     /** 强制模块引入的顺序 */
     'import/order': 'error',
+
+    /** 强制 import 排序 */
+    'simple-import-sort/imports': 'error',
 
     /** 强制所有 import 语句放在文件的最顶部 */
     'import/first': 'error',
@@ -60,7 +78,6 @@ module.exports = {
 
     /** 禁止使用命名空间导出 */
     'import/namespace': 'off',
-
 
     // #endregion
     // -----------------------------------------------------
