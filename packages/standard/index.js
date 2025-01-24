@@ -158,6 +158,17 @@ module.exports = {
       extends: ['./libs/json-standard']
     },
     {
+      files: [
+        '**/tsconfig*.json',
+        'tsconfig.json',
+        'tsconfig.*.json',
+        'jsconfig.json',
+        'jsconfig.*.json'
+      ],
+      parser: 'jsonc-eslint-parser',
+      extends: ['./libs/tsconfig-sort-keys']
+    },
+    {
       files: ['**/*.yaml', '**/*.yml'],
       parser: 'yaml-eslint-parser',
       extends: ['./libs/yml-standard']

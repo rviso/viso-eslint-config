@@ -1,0 +1,44 @@
+{
+  "name": "eslint-plugin-tsconfig-sort",
+  "version": "0.3.7",
+  "description": "提供 tsconfig.json 文件属性排序规则",
+  "author": "Lingann",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rviso/viso-eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rviso/viso-eslint-config/issues"
+  },
+  "keywords": [
+    "eslint-config",
+    "tsconfig",
+    "sort"
+  ],
+  "main": "index.js",
+  "files": [
+    "libs",
+    "utils.js",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.57.0",
+    "prettier": ">=3.0.0",
+    "typescript": ">=4.9.5"
+  },
+  "dependencies": {
+    "@humanwhocodes/momoa": "^3.3.6",
+    "detect-indent": "^7.0.1",
+    "jsonc-parser": "^3.3.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "gitHead": "65d7706106e283a5cfc82552add8d5d6ecc2efb7"
+}

@@ -8,7 +8,11 @@ module.exports = {
       files: [
         '*.ts',
         '*.tsx',
-        '*.jsx'
+        '*.jsx',
+        'tsconfig.json',
+        'tsconfig.*.json',
+        'jsconfig.json',
+        'jsconfig.*.json'
       ],
       extends: ['@viso/eslint-config-typescript'],
       parserOptions: {

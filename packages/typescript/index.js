@@ -40,6 +40,7 @@ module.exports = {
         './libs/ts-canonical-extends',
         './libs/newline-destructuring-extends'
       ]
-    }
+    },
+
   ]
 }

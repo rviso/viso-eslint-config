@@ -50,6 +50,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-toml": "^0.11.0",
+    "eslint-plugin-tsconfig-sort": "^0.3.7",
     "eslint-plugin-unicorn": "^42.0.0",
     "eslint-plugin-yml": "^1.0.0",
     "jsonc-eslint-parser": "^2.1.0",
