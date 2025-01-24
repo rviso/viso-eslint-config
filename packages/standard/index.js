@@ -49,7 +49,9 @@ module.exports = {
     '__snapshots__',
     '!.github',
     '!.vitepress',
-    '!.vscode'
+    '!.vscode',
+    '!.*.json',
+    '!.*rc'
   ],
   overrides: [
     {
@@ -145,10 +147,12 @@ module.exports = {
         '**/*.json',
         '**/*.json5',
         '**/*.jsonc',
-        '**/*.eslintrc',
-        '**/*.babelrc',
-        '**/*.stylelintrc',
-        '**/*.prettierrc'
+        '**/.*.json',
+        '**/.*.jsonc',
+        '.eslintrc',
+        '.babelrc',
+        '.prettierrc',
+        '.stylelintrc'
       ],
       parser: 'jsonc-eslint-parser',
       extends: ['./libs/json-standard']

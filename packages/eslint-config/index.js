@@ -5,7 +5,11 @@ module.exports = {
   extends: ['@viso/eslint-config-standard'],
   overrides: [
     {
-      files: ['*.ts', '*.tsx'],
+      files: [
+        '*.ts',
+        '*.tsx',
+        '*.jsx'
+      ],
       extends: ['@viso/eslint-config-typescript'],
       parserOptions: {
         parser: '@typescript-eslint/parser'

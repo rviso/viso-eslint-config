@@ -42,7 +42,7 @@ module.exports = {
     'import/named': 'off',
 
     /** 强制模块引入的顺序 */
-    'import/order': 'error',
+    'import/order': 'off',
 
     /** 强制 import 排序 */
     'simple-import-sort/imports': 'error',
