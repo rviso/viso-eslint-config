@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-tsconfig-sort",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "提供 tsconfig.json 文件属性排序规则",
   "author": "Lingann",
   "license": "MIT",
