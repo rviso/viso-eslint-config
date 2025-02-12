@@ -1,140 +1,202 @@
-// Detect either spaces or tabs but not both to properly handle tabs for indentation and spaces for alignment
-const INDENT_REGEX = /^(?:( )+|\t+)/
+/**
+ * **********************************************************
+ * @file                          detect-indent.js
+ * @description                   用于检测文本中使用缩进类型（空格或Tab）及其数量的工具模块
+ * @copyright                     lingann
+ * **********************************************************
+ */
 
+// ====================================
+// #region 常量定义
+// ====================================
+
+/** 缩进类型：空格 */
 const INDENT_TYPE_SPACE = 'space'
+
+/** 缩进类型：Tab */
 const INDENT_TYPE_TAB = 'tab'
 
+/** 缩进匹配正则（匹配行首的空格或Tab） */
+const INDENT_REGEX = /^(?:( )+|\t+)/
+
+// #endregion
+// ====================================
+
+// ====================================
+// #region 核心功能 - 缩进检测
+// ====================================
+
 /**
-Make a Map that counts how many indents/unindents have occurred for a given size and how many lines follow a given indentation.
-*/
-function makeIndentsMap(string, ignoreSingleSpaces) {
-  const indents = new Map()
+ * 生成缩进统计Map
+ * @param {string} text - 要分析的文本
+ * @param {boolean} ignoreSingleSpaces - 是否忽略单个空格
+ * @returns {Map<string, [number, number]>} 缩进统计Map，key为缩进类型+数量，值为[使用次数, 权重]
+ */
+function makeIndentsMap(text, ignoreSingleSpaces) {
 
-  // Remember the size of previous line's indentation
-  let previousSize = 0
-  let previousIndentType
+  /** @type {Map<string, [number, number]>} */
+  const indentsMap = new Map()
 
-  // Indents key (ident type + size of the indents/unindents)
-  let key
+  /** 前一行缩进大小 */
+  let previousIndentSize = 0
 
-  for (const line of string.split(/\n/g)) {
-    if (!line) {
-      // Ignore empty lines
+  /** 前一行缩进类型 */
+  let previousIndentType = ''
+
+  // 逐行分析
+  for (const line of text.split(/\n/g)) {
+    if (!line) continue // 忽略空行
+
+    const matches = line.match(INDENT_REGEX)
+    if (!matches) {
+      previousIndentSize = 0
+      previousIndentType = ''
       continue
     }
 
-    let indent
-    let indentType
-    let use
-    let weight
-    let entry
-    const matches = line.match(INDENT_REGEX)
+    const indentSize = matches[0].length
+    const indentType = matches[1] ? INDENT_TYPE_SPACE : INDENT_TYPE_TAB
 
-    if (matches === null) {
-      previousSize = 0
-      previousIndentType = ''
-    } else {
-      indent = matches[0].length
-      indentType = matches[1] ? INDENT_TYPE_SPACE : INDENT_TYPE_TAB
-
-      // Ignore single space unless it's the only indent detected
-      if (ignoreSingleSpaces && indentType === INDENT_TYPE_SPACE && indent === 1) {
-        continue
-      }
-
-      if (indentType !== previousIndentType) {
-        previousSize = 0
-      }
-
-      previousIndentType = indentType
-
-      use = 1
-      weight = 0
-
-      const indentDifference = indent - previousSize
-      previousSize = indent
-
-      if (indentDifference === 0) {
-        use = 0
-        weight = 1
-      } else {
-        const absoluteIndentDifference = indentDifference > 0 ? indentDifference : -indentDifference
-        key = encodeIndentsKey(indentType, absoluteIndentDifference)
-      }
-
-      // Update the stats
-      entry = indents.get(key)
-      entry = entry === undefined ? [1, 0] : [entry[0] + use, entry[1] + weight]
-
-      indents.set(key, entry)
+    // 忽略单个空格（如果开启）
+    if (ignoreSingleSpaces && indentType === INDENT_TYPE_SPACE && indentSize === 1) {
+      continue
     }
+
+    // 检测到缩进类型变化时重置统计
+    if (indentType !== previousIndentType) {
+      previousIndentSize = 0
+    }
+
+    // 计算缩进差异
+    const indentDifference = indentSize - previousIndentSize
+    previousIndentSize = indentSize
+    previousIndentType = indentType
+
+    // 跳过无变化的情况
+    if (indentDifference === 0) continue
+
+    // 生成Map键
+    const absoluteDifference = Math.abs(indentDifference)
+    const mapKey = encodeIndentsKey(indentType, absoluteDifference)
+
+    // 更新统计数据
+    const currentStats = indentsMap.get(mapKey) || [0, 0]
+    currentStats[0] += 1 // 使用次数
+    currentStats[1] += Math.abs(indentDifference) * 10 // 权重
+    indentsMap.set(mapKey, currentStats)
   }
 
-  return indents
+  return indentsMap
 }
 
-function encodeIndentsKey(indentType, indentAmount) {
-  const typeCharacter = indentType === INDENT_TYPE_SPACE ? 's' : 't'
-  return typeCharacter + String(indentAmount)
-}
+/**
+ * 检测文本中使用的主要缩进类型和数量
+ * @param {string} text - 要分析的文本
+ * @returns {{
+ *   amount: number,
+ *   type: 'space' | 'tab',
+ *   indent: string
+ * }} 检测结果
+ */
+function detectIndent(text) {
+  if (typeof text !== 'string') {
+    throw new TypeError('Expected a string')
+  }
 
-function decodeIndentsKey(indentsKey) {
-  const keyHasTypeSpace = indentsKey[0] === 's'
-  const type = keyHasTypeSpace ? INDENT_TYPE_SPACE : INDENT_TYPE_TAB
+  // 优先忽略单个空格进行检测
+  let indentsMap = makeIndentsMap(text, true)
 
-  const amount = Number(indentsKey.slice(1))
+  // 如果未检测到任何缩进，则关闭单空格忽略重新检测
+  if (indentsMap.size === 0) {
+    indentsMap = makeIndentsMap(text, false)
+  }
 
-  return { type, amount }
-}
+  // 获取最常使用的缩进键
+  const mostUsedKey = getMostUsedKey(indentsMap)
 
-function getMostUsedKey(indents) {
-  let result
-  let maxUsed = 0
-  let maxWeight = 0
+  // 初始化默认返回值
+  const result = {
+    amount: 0,
+    type: INDENT_TYPE_SPACE,
+    indent: ''
+  }
 
-  for (const [key, [usedCount, weight]] of indents) {
-    if (usedCount > maxUsed || (usedCount === maxUsed && weight > maxWeight)) {
-      maxUsed = usedCount
-      maxWeight = weight
-      result = key
-    }
+  if (mostUsedKey) {
+    const { type, amount } = decodeIndentsKey(mostUsedKey)
+    result.type = type
+    result.amount = amount
+    result.indent = makeIndentString(type, amount)
   }
 
   return result
 }
 
+// #endregion
+// ====================================
+
+// ====================================
+// #region 辅助工具函数
+// ====================================
+
+/**
+ * 生成缩进统计Map的键
+ * @param {'space' | 'tab'} indentType - 缩进类型
+ * @param {number} indentAmount - 缩进数量
+ * @returns {string} 编码后的键
+ */
+function encodeIndentsKey(indentType, indentAmount) {
+  const typeChar = indentType === INDENT_TYPE_SPACE ? 's' : 't'
+  return `${typeChar}${indentAmount}`
+}
+
+/**
+ * 解码缩进统计Map的键
+ * @param {string} key - 编码后的键
+ * @returns {{
+ *   type: 'space' | 'tab',
+ *   amount: number
+ * }} 解码后的信息
+ */
+function decodeIndentsKey(key) {
+  const type = key.startsWith('s') ? INDENT_TYPE_SPACE : INDENT_TYPE_TAB
+  const amount = Number(key.slice(1))
+  return { type, amount }
+}
+
+/**
+ * 获取最常使用的缩进键
+ * @param {Map<string, [number, number]>} indentsMap - 缩进统计Map
+ * @returns {string | undefined} 最常使用的键
+ */
+function getMostUsedKey(indentsMap) {
+  let resultKey
+  let maxUsed = 0
+  let maxWeight = 0
+
+  for (const [key, [usedCount, weight]] of indentsMap) {
+    if (usedCount > maxUsed || (usedCount === maxUsed && weight > maxWeight)) {
+      maxUsed = usedCount
+      maxWeight = weight
+      resultKey = key
+    }
+  }
+
+  return resultKey
+}
+
+/**
+ * 生成指定类型的缩进字符串
+ * @param {'space' | 'tab'} type - 缩进类型
+ * @param {number} amount - 缩进数量
+ * @returns {string} 生成的缩进字符串
+ */
 function makeIndentString(type, amount) {
-  const indentCharacter = type === INDENT_TYPE_SPACE ? ' ' : '\t'
-  return indentCharacter.repeat(amount)
+  const indentChar = type === INDENT_TYPE_SPACE ? ' ' : '\t'
+  return indentChar.repeat(amount)
 }
 
-function detectIndent(string) {
-  if (typeof string !== 'string') {
-    throw new TypeError('Expected a string')
-  }
-
-  let indents = makeIndentsMap(string, true)
-  if (indents.size === 0) {
-    indents = makeIndentsMap(string, false)
-  }
-
-  const keyOfMostUsedIndent = getMostUsedKey(indents)
-
-  let type
-  let amount = 0
-  let indent = ''
-
-  if (keyOfMostUsedIndent !== undefined) {
-    ({ type, amount } = decodeIndentsKey(keyOfMostUsedIndent))
-    indent = makeIndentString(type, amount)
-  }
-
-  return {
-    amount,
-    type,
-    indent
-  }
-}
+// #endregion
+// ====================================
 
 module.exports = {
   detectIndent

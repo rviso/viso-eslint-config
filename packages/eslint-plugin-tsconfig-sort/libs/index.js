@@ -2,7 +2,6 @@
 const { sortAstNode } = require('./ast-sorter')
 const {
   parseToAst,
-  compareAst,
   cloneAst,
   printAst
 } = require('./ast-utils')

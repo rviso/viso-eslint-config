@@ -1,7 +1,17 @@
-// ast-sorter.js - AST 排序模块
+/**
+ * *******************************************************************************************
+ * @file                        ast-sorter.js
+ * @description                 AST 排序模块，支持对 AST 对象节点进行递归排序，并保留注释位置
+ * @copyright                   lingann
+ * *******************************************************************************************
+ */
+
 const { COMPILER_OPTIONS_ORDER, ROOT_OPTIONS_ORDER } = require('./config')
-// ast-sorter.js
 const { isCommentNode } = require('./ast-utils')
+
+// ========================================================
+// #region AST 排序核心方法
+// ========================================================
 
 /**
  * 递归排序 AST 对象节点并保留注释
@@ -10,6 +20,7 @@ const { isCommentNode } = require('./ast-utils')
  * @returns {Momoa.AstNode} 排序后的 AST 节点
  */
 function sortAstNode(ast, parentKey = 'root') {
+  // 非对象节点直接返回，无需排序
   if (ast.type !== 'Object') return ast
 
   // 步骤 1: 将注释与属性节点绑定分组
@@ -27,7 +38,12 @@ function sortAstNode(ast, parentKey = 'root') {
   return ast
 }
 
-// ==================== 核心工具方法 ====================
+// #endregion
+// ========================================================
+
+// ========================================================
+// #region 注释与属性节点绑定分组相关方法
+// ========================================================
 
 /**
  * 将注释与属性节点绑定分组
@@ -36,18 +52,20 @@ function sortAstNode(ast, parentKey = 'root') {
  */
 function groupCommentsWithMembers(members) {
   const blocks = []
-  let pendingComments = []
+  let pendingComments = [] /** 当前暂存的注释节点数组 */
 
   for (const node of members) {
     if (isCommentNode(node)) {
+      // 如果是注释节点，暂存到 pendingComments 中
       pendingComments.push(node)
     } else {
+      // 如果是属性节点，创建一个新的注释块
       blocks.push({
         comments: pendingComments,
         member: node,
-        sortKey: node.name.value.toLowerCase() // 预计算排序键
+        sortKey: node.name.value.toLowerCase() /** 预计算排序键 */
       })
-      pendingComments = []
+      pendingComments = [] // 清空暂存的注释节点
     }
   }
 
@@ -55,13 +73,20 @@ function groupCommentsWithMembers(members) {
   if (pendingComments.length > 0) {
     blocks.push({
       comments: pendingComments,
-      member: null,
-      sortKey: '' // 无成员时使用空键
+      member: null, /** 无成员时标记为 null */
+      sortKey: '' /** 无成员时使用空键 */
     })
   }
 
   return blocks
 }
+
+// #endregion
+// ========================================================
+
+// ========================================================
+// #region 注释块排序相关方法
+// ========================================================
 
 /**
  * 对注释块进行排序
@@ -92,6 +117,13 @@ function sortCommentBlocks(blocks, parentKey) {
   })
 }
 
+// #endregion
+// ========================================================
+
+// ========================================================
+// #region 嵌套 compilerOptions 处理相关方法
+// ========================================================
+
 /**
  * 处理嵌套的 compilerOptions
  * @param {CommentBlock[]} blocks - 已排序的块数组
@@ -101,11 +133,19 @@ function processNestedCompilerOptions(blocks) {
     if (block.member?.name.value === 'compilerOptions') {
       const optionsNode = block.member.value
       if (optionsNode.type === 'Object') {
+        // 递归排序 compilerOptions 下的成员
         optionsNode.members = sortAstNode(optionsNode, 'compilerOptions').members
       }
     }
   })
 }
+
+// #endregion
+// ========================================================
+
+// ========================================================
+// #region 展开排序后的块相关方法
+// ========================================================
 
 /**
  * 展开排序后的块为 AST 成员数组
@@ -113,26 +153,45 @@ function processNestedCompilerOptions(blocks) {
  * @returns {Momoa.Node[]} AST 成员数组
  */
 function flattenSortedBlocks(blocks) {
-  return blocks.flatMap((block) => {
-    const nodes = []
-    // 保留注释原始顺序
-    if (block.comments.length > 0) {
+  if (!Array.isArray(blocks)) {
+    throw new TypeError('Expected an array of CommentBlock objects')
+  }
+
+  const nodes = []
+
+  // 遍历所有块，确保每个块的成员节点都被正确处理
+  blocks.forEach((block) => {
+    // 如果存在注释节点，先添加注释
+    if (Array.isArray(block.comments) && block.comments.length > 0) {
       nodes.push(...block.comments)
     }
-    // 添加成员节点（如果有）
+
+    // 如果存在成员节点，则添加成员节点
     if (block.member) {
       nodes.push(block.member)
     }
-    return nodes
   })
+
+  return nodes
 }
 
-// ==================== 辅助方法 ====================
+// #endregion
+// ========================================================
 
+// ========================================================
+// #region 辅助方法
+// ========================================================
+
+/**
+ * 根据父节点键名获取排序规则
+ * @param {string} parentKey - 父节点键名
+ * @returns {string[]} 排序规则数组
+ */
 function getOrderRules(parentKey) {
-  return parentKey === 'compilerOptions'
-    ? COMPILER_OPTIONS_ORDER
-    : ROOT_OPTIONS_ORDER
+  return parentKey === 'compilerOptions' ? COMPILER_OPTIONS_ORDER : ROOT_OPTIONS_ORDER
 }
+
+// #endregion
+// ========================================================
 
 module.exports = { sortAstNode }
