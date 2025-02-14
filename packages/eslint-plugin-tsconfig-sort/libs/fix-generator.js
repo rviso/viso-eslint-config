@@ -40,9 +40,11 @@ function generateSortedText(sortedAst, originalText) {
   // 检测原始文本的引号类型
   const quoteType = detectQuoteType(originalText)
 
+  console.log('sortedAst:', sortedAst)
+
   // 使用 Momoa 打印 AST，保留注释和格式化
   let formattedText = Momoa.print(sortedAst, {
-    indent: indent.length || 2,
+    indent: indent.length,
     lineTerminator,
     comments: true,
     quote: quoteType
@@ -52,7 +54,7 @@ function generateSortedText(sortedAst, originalText) {
   formattedText = unescapePaths(formattedText)
 
   // 为 compilerOptions 添加分组和注释
-  formattedText = addCompilerOptionsGroup(formattedText)
+  // formattedText = addCompilerOptionsGroup(formattedText)
 
   return formattedText
 }
@@ -90,7 +92,7 @@ function addCompilerOptionsGroup(text) {
             groupContent += `/** ${description} */\n`
           }
           // 只在非最后一项时添加逗号
-          groupContent += `"${optionName}": ${existingOptions.get(optionName)}${index < options.length - 1 ? ',' : ''}\n`
+          // groupContent += `"${optionName}": ${existingOptions.get(optionName)}${index < options.length - 1 ? ',' : ''}\n`
           existingOptions.delete(optionName) // 标记为已处理
         }
       })

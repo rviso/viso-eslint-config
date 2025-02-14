@@ -1,36 +1,8 @@
 {
   "compilerOptions": {
-    // ========================== 核心选项 ==========================
-    /** 指定 ECMAScript 目标版本，例如 "es5" 或 "es6" */
-    "target": "es5",
-    /** 指定模块代码生成策略，例如 "commonjs" 或 "esnext" */
-    "module": "commonjs",
-    /** 允许合成默认导入（即使模块没有默认导出） */
-    "allowSyntheticDefaultImports": true,
-    /** 启用 ES 模块的互操作性支持 */
-    "esModuleInterop": true,
-    /** 指定模块解析的基目录 */
-    "baseUrl": ".",
-
-    // ========================== 严格检查 ==========================
-    /** 启用所有严格类型检查选项 */
-    "strict": true,
-    /** 禁止隐式的 any 类型 */
-    "noImplicitAny": true,
-
-    // ========================== 模块解析 ==========================
-    /** 指定源文件的根目录 */
-    "rootDir": "src",
-    /** 指定输出目录 */
-    "outDir": "dist",
-    /** 生成 source map 文件 */
-    "sourceMap": false
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "./types/**/*.d.ts",
-    "./types/**/*.ts",
-    "./types/**/*.tsx"
-  ]
+    "types": ["node"],
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
 }
