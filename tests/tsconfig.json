@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "types": ["node"],
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["node"],
+    "strict": true,
+    "sourceMap": true
   }
 }
