@@ -21,6 +21,14 @@
   ],
   "GitCommitPlugin.MaxSubjectCharacters": 40,
   "github.copilot.chat.localeOverride": "zh-CN",
-  "cSpell.words": ["endregion", "rviso", "viso"],
-  "typescript.validate.enable": false
+  "cSpell.words": [
+    "endregion",
+    "Momoa",
+    "rviso",
+    "viso"
+  ],
+  "typescript.validate.enable": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
 }

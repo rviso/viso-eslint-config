@@ -50,6 +50,7 @@ module.exports = {
     '!.github',
     '!.vitepress',
     '!.vscode',
+    '!.*.json',
     '!.*rc'
   ],
   overrides: [
@@ -146,13 +147,26 @@ module.exports = {
         '**/*.json',
         '**/*.json5',
         '**/*.jsonc',
-        '**/*.eslintrc',
-        '**/*.babelrc',
-        '**/*.stylelintrc',
-        '**/*.prettierrc'
+        '**/.*.json',
+        '**/.*.jsonc',
+        '.eslintrc',
+        '.babelrc',
+        '.prettierrc',
+        '.stylelintrc'
       ],
       parser: 'jsonc-eslint-parser',
       extends: ['./libs/json-standard']
+    },
+    {
+      files: [
+        '**/tsconfig*.json',
+        'tsconfig.json',
+        'tsconfig.*.json',
+        'jsconfig.json',
+        'jsconfig.*.json'
+      ],
+      parser: 'jsonc-eslint-parser',
+      extends: ['./libs/tsconfig-sort-keys']
     },
     {
       files: ['**/*.yaml', '**/*.yml'],

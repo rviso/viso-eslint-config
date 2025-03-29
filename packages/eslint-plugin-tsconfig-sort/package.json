@@ -1,8 +1,8 @@
 {
-  "name": "@viso/eslint-config-vue",
+  "name": "eslint-plugin-tsconfig-sort",
   "version": "0.4.2",
-  "description": "专为Vue项目提供的ESLint配置",
-  "author": "Lingann Wang",
+  "description": "提供 tsconfig.json 文件属性排序规则",
+  "author": "Lingann",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,26 +12,28 @@
     "url": "https://github.com/rviso/viso-eslint-config/issues"
   },
   "keywords": [
-    "eslint-config"
+    "eslint-config",
+    "tsconfig",
+    "sort"
   ],
   "main": "index.js",
   "files": [
     "libs",
+    "utils.js",
     "index.js"
   ],
   "engines": {
     "node": ">=18.0.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "peerDependencies": {
-    "eslint": ">=8.0.1"
+    "eslint": ">=8.57.0",
+    "prettier": ">=3.0.0",
+    "typescript": ">=4.9.5"
   },
   "dependencies": {
-    "@viso/eslint-config-standard": "^0.4.2",
-    "eslint": "^8.16.0",
-    "eslint-plugin-vue": "^9.3.0"
+    "@humanwhocodes/momoa": "^3.3.6",
+    "detect-indent": "^7.0.1",
+    "jsonc-parser": "^3.3.1"
   },
   "publishConfig": {
     "access": "public",
