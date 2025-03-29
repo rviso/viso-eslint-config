@@ -49,7 +49,8 @@ module.exports = {
     '__snapshots__',
     '!.github',
     '!.vitepress',
-    '!.vscode'
+    '!.vscode',
+    '!.*rc'
   ],
   overrides: [
     {
