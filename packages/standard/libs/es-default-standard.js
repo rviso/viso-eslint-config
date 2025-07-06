@@ -26,17 +26,8 @@ module.exports = {
     /** 禁止使用 var，使用 let 或 const 代替 */
     'no-var': 'warn',
 
-    /** 警告未使用的变量 */
-    'no-unused-vars': [
-      'warn',
-      {
-        varsIgnorePattern: '^_',
-        argsIgnorePattern: '^_',
-        destructuredArrayIgnorePattern: '^_',
-        ignoreRestSiblings: true,
-        caughtErrors: 'none'
-      }
-    ],
+    /** 警告未使用的变量 - 由 unused-imports 插件处理 */
+    'no-unused-vars': 'off',
 
     /** 禁止给 const 赋值 */
     'no-const-assign': 'error',

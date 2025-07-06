@@ -2,6 +2,13 @@
 
 提供基础的 ESLint 配置。
 
+## 功能特性
+
+- 🚀 基础的 ESLint 规则配置
+- 🧹 自动清除未使用的导入模块（unused-imports）
+- 📦 支持多种文件类型（JS、TS、Vue、JSON、YAML 等）
+- 🎯 智能的代码风格检查和自动修复
+
 ## 安装
 
 要安装这个包，请运行以下命令：
@@ -24,4 +31,12 @@ yarn add @viso/eslint-config-standard --dev
 module.exports = {
   extends: ['@viso/eslint-config-standard'],
 }
+```
+
+## 自动修复
+
+运行以下命令可以自动修复可修复的问题（包括清除未使用的导入）：
+
+```bash
+npx eslint . --fix
 ```

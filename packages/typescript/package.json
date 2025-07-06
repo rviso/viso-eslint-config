@@ -2,7 +2,7 @@
   "name": "@viso/eslint-config-typescript",
   "version": "0.4.2",
   "description": "提供基础的 TypeScript 项目 ESLint 配置",
-  "author": "Lingann Wang",
+  "author": "Lingann",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -3,11 +3,18 @@ import {
   computed,
   reactive,
   ref,
-  watch 
+  watch ,
+  onMounted,
+       onUnmounted,
+  onBeforeMount,
+  onBeforeUnmount,
+  onBeforeUpdate,
+  onUpdated,
+  onActivated,
 } from 'vue'
 
 const state = reactive({
-  count: 0
+         count: 0
 })
 
 const count = ref(0)

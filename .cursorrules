@@ -1,0 +1,452 @@
+# Cursor 项目规则配置文件
+
+## 项目概述
+这是一个基于 Lerna 管理的 monorepo 项目，提供 Viso ESLint 配置包的完整解决方案。项目包含多个 ESLint 配置包，支持 JavaScript、TypeScript、Vue3 等不同技术栈的代码检查和格式化。
+
+## 项目类型和技术栈
+tech_stack: ["eslint", "typescript", "vue", "javascript", "lerna", "pnpm"]
+framework: "lerna-monorepo"
+language: "javascript/typescript"
+architecture: "plugin-based" # 基于插件的架构
+
+## 项目结构
+directory_structure:
+  root:
+    - "packages"               # 包目录
+    - "tests"                  # 测试目录
+    - "node_modules"           # 依赖
+    - ".vscode"                # VSCode 配置
+    - "pnpm-workspace.yaml"    # pnpm 工作区配置
+    - "lerna.json"             # Lerna 配置
+    - "package.json"           # 根 package.json
+    - ".eslintrc"              # ESLint 配置
+    - ".prettierrc"            # Prettier 配置
+    - ".gitignore"             # Git 忽略文件
+    - "README.md"              # 项目说明
+    - "README_zh-CN.md"        # 中文说明
+    - "CHANGELOG.md"           # 变更日志
+    - "LICENSE"                # 许可证
+
+  packages_structure:
+    - "eslint-config"          # 主配置包
+    - "standard"               # 标准配置包
+    - "typescript"             # TypeScript 配置包
+    - "vue"                    # Vue 配置包
+    - "eslint-plugin-tsconfig-sort"  # TypeScript 配置排序插件
+
+  package_structure:
+    - "libs"                   # 配置模块
+    - "index.js"               # 入口文件
+    - "package.json"           # 包配置
+    - "README.md"              # 包说明
+
+## 文件命名规则
+naming_conventions:
+  # ESLint 配置
+  config_files: "*.js"
+  lib_files: "*-standard.js"
+  plugin_files: "*.plugin.js"
+
+  # 文档文件
+  readme: "README.md"
+  changelog: "CHANGELOG.md"
+
+  # 配置文件
+  package_config: "package.json"
+  eslint_config: ".eslintrc"
+  prettier_config: ".prettierrc"
+
+  # 测试文件
+  test_files: "*.test.js"
+  spec_files: "*.spec.js"
+
+## 包架构规则
+package_architecture:
+  layers:
+    main_config:
+      description: "主配置包，整合所有子配置"
+      location: "packages/eslint-config"
+      contents:
+        - "index.js"           # 主入口
+        - "package.json"       # 包配置
+        - "README.md"          # 说明文档
+
+    standard_config:
+      description: "标准 JavaScript/基础配置"
+      location: "packages/standard"
+      contents:
+        - "index.js"           # 标准配置入口
+        - "libs/"              # 配置模块
+        - "package.json"       # 包配置
+        - "README.md"          # 说明文档
+
+    typescript_config:
+      description: "TypeScript 专用配置"
+      location: "packages/typescript"
+      contents:
+        - "index.js"           # TypeScript 配置入口
+        - "libs/"              # 配置模块
+        - "package.json"       # 包配置
+        - "README.md"          # 说明文档
+
+    vue_config:
+      description: "Vue 专用配置"
+      location: "packages/vue"
+      contents:
+        - "index.js"           # Vue 配置入口
+        - "libs/"              # 配置模块
+        - "package.json"       # 包配置
+        - "README.md"          # 说明文档
+
+    plugins:
+      description: "自定义 ESLint 插件"
+      location: "packages/eslint-plugin-*"
+      contents:
+        - "index.js"           # 插件入口
+        - "libs/"              # 插件模块
+        - "package.json"       # 包配置
+        - "README.md"          # 说明文档
+
+## 技术栈配置
+
+### ESLint 配置
+eslint_config:
+  base: "ESLint 8.57.0+"
+  language: "JavaScript/TypeScript"
+  parser: "@typescript-eslint/parser"
+  plugins:
+    - "@stylistic/js"
+    - "@typescript-eslint"
+    - "vue"
+    - "import"
+    - "unused-imports"
+    - "unicorn"
+  extends:
+    - "eslint:recommended"
+    - "@typescript-eslint/recommended"
+    - "plugin:vue/vue3-recommended"
+
+### 代码风格配置
+code_style:
+  formatter: "ESLint + Stylistic"
+  max_line_length: 120
+  indent_size: 2
+  quotes: "single"
+  semicolons: false
+  trailing_comma: "never"
+  object_curly_spacing: true
+  array_bracket_spacing: false
+
+### 包管理配置
+package_management:
+  manager: "pnpm"
+  workspace: "pnpm-workspace.yaml"
+  monorepo_tool: "lerna"
+  node_version: ">=18.0.0"
+  npm_registry: "https://registry.npmjs.org/"
+
+## 导入顺序规则
+import_order:
+  - "node_modules"           # 第三方库
+  - "eslint"                 # ESLint 相关
+  - "typescript"             # TypeScript 相关
+  - "vue"                    # Vue 相关
+  - "libs"                   # 本地配置模块
+  - "utils"                  # 工具函数
+  - "configs"                # 配置文件
+
+## ESLint 规则设计原则
+eslint_rules_principles:
+  consistency:
+    - "保持不同包之间的规则一致性"
+    - "相同类型的规则应该有相同的配置"
+    - "避免规则之间的冲突"
+
+  flexibility:
+    - "提供合理的默认配置"
+    - "允许用户覆盖特定规则"
+    - "支持不同项目类型的需求"
+
+  performance:
+    - "避免性能开销过大的规则"
+    - "优先使用内置规则"
+    - "合理使用第三方插件"
+
+  maintainability:
+    - "规则配置应该易于理解和维护"
+    - "提供清晰的注释和文档"
+    - "定期更新和优化规则"
+
+## 包发布规则
+package_publishing:
+  versioning: "semantic versioning"
+  changelog: "conventional commits"
+  registry: "npm public registry"
+
+  publish_process:
+    - "运行测试确保质量"
+    - "更新版本号"
+    - "生成 changelog"
+    - "发布到 npm"
+    - "创建 git tag"
+
+  version_management:
+    - "使用 lerna version 管理版本"
+    - "保持包之间的版本同步"
+    - "遵循语义化版本规范"
+
+## 测试规则
+testing_rules:
+  test_types:
+    - "配置文件语法测试"
+    - "规则冲突检测"
+    - "实际项目集成测试"
+
+  test_structure:
+    - "tests/"               # 测试目录
+    - "*.test.js"            # 单元测试
+    - "fixtures/"            # 测试夹具
+
+  test_requirements:
+    - "所有配置包必须有对应测试"
+    - "新增规则必须有测试覆盖"
+    - "测试应该覆盖常见使用场景"
+
+## 文档规则
+documentation_rules:
+  required_files:
+    - "README.md"            # 英文说明
+    - "README_zh-CN.md"      # 中文说明
+    - "CHANGELOG.md"         # 变更日志
+    - "LICENSE"              # 许可证
+
+  package_documentation:
+    - "每个包必须有独立的 README"
+    - "说明安装和使用方法"
+    - "提供配置示例"
+    - "列出主要特性"
+
+  code_documentation:
+    - "配置文件必须有清晰的注释"
+    - "复杂规则需要说明原因"
+    - "提供规则分组和分类"
+
+## Git 规则
+git_rules:
+  commit_message_format: "type(scope): description"
+  commit_types:
+    - "feat: 新功能"
+    - "fix: 修复bug"
+    - "docs: 文档更新"
+    - "style: 代码格式"
+    - "refactor: 重构"
+    - "test: 测试"
+    - "chore: 构建/工具"
+    - "perf: 性能优化"
+
+  branch_naming:
+    - "feature/功能名称"
+    - "fix/问题描述"
+    - "hotfix/紧急修复"
+    - "release/版本号"
+
+  ignore_patterns:
+    - "node_modules/"
+    - "dist/"
+    - "*.log"
+    - ".DS_Store"
+    - "coverage/"
+
+## 代码质量规则
+code_quality:
+  linting: "ESLint (自身配置)"
+  formatting: "Prettier + ESLint"
+  type_checking: "TypeScript (部分包)"
+
+  quality_gates:
+    - "ESLint 检查通过"
+    - "Prettier 格式化通过"
+    - "测试用例通过"
+    - "文档完整性检查"
+
+## 兼容性规则
+compatibility_rules:
+  node_versions: ">=18.0.0"
+  eslint_versions: ">=8.57.0"
+  typescript_versions: ">=4.9.5"
+
+  browser_support:
+    - "现代浏览器"
+    - "Node.js 环境"
+    - "各种构建工具"
+
+  framework_support:
+    - "Vue 3.x"
+    - "React (通过扩展)"
+    - "原生 JavaScript"
+    - "TypeScript"
+
+## AI 开发注意事项和问题调试规范
+ai_development_guidelines:
+
+  ### 核心原则
+  core_principles:
+    - "规则优先 - 理解 ESLint 规则的设计原理和最佳实践"
+    - "兼容优先 - 确保配置在不同环境和项目中的兼容性"
+    - "性能优先 - 避免配置过重影响开发体验"
+    - "文档优先 - 每个配置变更都要有清晰的文档说明"
+    - "测试优先 - 确保配置的正确性和稳定性"
+
+  ### 配置管理
+  config_management:
+    检查清单:
+      - "新增规则前，检查是否与现有规则冲突"
+      - "修改规则前，评估对现有项目的影响"
+      - "确保规则配置的合理性和必要性"
+      - "验证规则在不同文件类型中的表现"
+
+    必须行为:
+      - "使用 codebase_search 搜索相关规则配置"
+      - "测试规则在实际项目中的效果"
+      - "更新相关文档和示例"
+      - "保持包之间的一致性"
+
+    禁止行为:
+      - "不允许添加冲突的规则配置"
+      - "不允许删除重要的规则而不说明原因"
+      - "不允许添加过于严格影响开发体验的规则"
+
+  ### 包版本管理
+  package_versioning:
+    版本策略:
+      - "遵循语义化版本规范"
+      - "重大变更必须升级主版本号"
+      - "新增功能升级次版本号"
+      - "Bug 修复升级修订版本号"
+
+    发布流程:
+      - "使用 lerna version 统一管理版本"
+      - "确保 CHANGELOG 的完整性"
+      - "测试发布前的完整性"
+      - "发布后验证包的可用性"
+
+    依赖管理:
+      - "及时更新 peerDependencies"
+      - "保持依赖版本的合理性"
+      - "避免引入不必要的依赖"
+
+  ### 规则设计原则
+  rule_design_principles:
+    设计考虑:
+      - "规则应该有明确的目的和价值"
+      - "考虑规则对开发效率的影响"
+      - "平衡代码质量和开发体验"
+      - "提供合理的默认配置"
+
+    规则分类:
+      - "错误级别：影响代码运行的问题"
+      - "警告级别：代码质量和风格问题"
+      - "关闭级别：不适用或有争议的规则"
+
+    配置策略:
+      - "基础配置保持简洁"
+      - "高级配置提供更多选项"
+      - "特定场景配置解决特殊需求"
+
+  ### 测试和验证
+  testing_validation:
+    测试类型:
+      - "配置文件语法正确性测试"
+      - "规则冲突检测测试"
+      - "实际项目集成测试"
+      - "性能影响测试"
+
+    验证流程:
+      - "本地测试配置的正确性"
+      - "在示例项目中验证效果"
+      - "检查与其他配置的兼容性"
+      - "确认文档的准确性"
+
+    质量保证:
+      - "每个配置变更都要有测试覆盖"
+      - "定期回归测试确保稳定性"
+      - "收集用户反馈持续改进"
+
+  ### 文档和维护
+  documentation_maintenance:
+    文档要求:
+      - "每个包都要有完整的使用文档"
+      - "配置变更要更新 CHANGELOG"
+      - "提供清晰的配置示例"
+      - "说明规则的设计意图"
+
+    维护策略:
+      - "定期更新依赖和规则"
+      - "关注 ESLint 生态的变化"
+      - "收集和处理用户反馈"
+      - "保持代码和文档的同步"
+
+    社区交流:
+      - "及时回应 GitHub Issues"
+      - "参与相关技术社区讨论"
+      - "分享最佳实践和经验"
+
+  ### 错误处理和调试
+  error_handling_debugging:
+    常见问题:
+      - "规则冲突导致的配置错误"
+      - "版本兼容性问题"
+      - "性能问题"
+      - "文档不准确"
+
+    调试方法:
+      - "使用 ESLint 的调试功能"
+      - "分析规则的具体行为"
+      - "在不同环境中测试"
+      - "查看详细的错误信息"
+
+    解决策略:
+      - "优先修复影响使用的严重问题"
+      - "提供临时解决方案"
+      - "完善测试避免类似问题"
+      - "更新文档和示例"
+
+  ### 性能优化
+  performance_optimization:
+    性能考虑:
+      - "避免过多的规则检查"
+      - "合理使用缓存机制"
+      - "优化规则的执行顺序"
+      - "减少不必要的文件扫描"
+
+    优化策略:
+      - "使用 ESLint 的性能分析工具"
+      - "监控规则的执行时间"
+      - "优化配置的加载方式"
+      - "提供性能调优建议"
+
+    监控指标:
+      - "规则检查的总耗时"
+      - "内存使用情况"
+      - "文件处理速度"
+      - "用户反馈的性能问题"
+
+  ### 持续改进
+  continuous_improvement:
+    改进方向:
+      - "根据用户反馈优化规则"
+      - "跟进 ESLint 生态的发展"
+      - "改进配置的易用性"
+      - "提升文档质量"
+
+    评估标准:
+      - "用户满意度"
+      - "配置的稳定性"
+      - "社区活跃度"
+      - "技术指标表现"
+
+    迭代策略:
+      - "定期发布小版本更新"
+      - "重大改进通过大版本发布"
+      - "保持向后兼容性"
+      - "提供迁移指南"

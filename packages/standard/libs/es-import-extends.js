@@ -15,7 +15,7 @@ module.exports = {
       }
     }
   },
-  plugins: ['import-newlines', 'simple-import-sort'],
+  plugins: ['import-newlines', 'simple-import-sort', 'unused-imports'],
   rules: {
     // -----------------------------------------------------
     // #region import 规则
@@ -78,6 +78,30 @@ module.exports = {
 
     /** 禁止使用命名空间导出 */
     'import/namespace': 'off',
+
+    // #endregion
+    // -----------------------------------------------------
+
+    // -----------------------------------------------------
+    // #region unused-imports 规则
+    // -----------------------------------------------------
+
+    /** 禁止未使用的变量（由 unused-imports 插件处理） */
+    'no-unused-vars': 'off',
+
+    /** 检测未使用的导入并自动移除 */
+    'unused-imports/no-unused-imports': 'error',
+
+    /** 检测未使用的变量 */
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_'
+      }
+    ],
 
     // #endregion
     // -----------------------------------------------------

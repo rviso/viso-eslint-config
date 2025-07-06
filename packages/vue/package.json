@@ -2,7 +2,7 @@
   "name": "@viso/eslint-config-vue",
   "version": "0.4.2",
   "description": "专为Vue项目提供的ESLint配置",
-  "author": "Lingann Wang",
+  "author": "Lingann",
   "license": "MIT",
   "repository": {
     "type": "git",
