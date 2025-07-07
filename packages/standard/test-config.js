@@ -1,11 +1,11 @@
 module.exports = {
   parserOptions: {
     ecmaVersion: 2022,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   env: {
     es6: true,
-    node: true,
+    node: true
   },
   plugins: ['unused-imports'],
   rules: {
@@ -19,6 +19,6 @@ module.exports = {
         args: 'after-used',
         argsIgnorePattern: '^_'
       }
-    ],
+    ]
   }
 }
