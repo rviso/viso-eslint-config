@@ -1,6 +1,6 @@
 {
   "name": "@viso/eslint-config-standard",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "提供基础的 ESLint 配置",
   "author": "Lingann",
   "license": "MIT",
