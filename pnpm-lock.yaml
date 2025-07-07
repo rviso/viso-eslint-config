@@ -29,38 +29,17 @@ importers:
   packages/eslint-config:
     dependencies:
       '@viso/eslint-config-standard':
-        specifier: ^0.4.3
+        specifier: ^0.4.4
         version: link:../standard
       '@viso/eslint-config-typescript':
-        specifier: ^0.4.3
+        specifier: ^0.4.4
         version: link:../typescript
       '@viso/eslint-config-vue':
-        specifier: ^0.4.3
+        specifier: ^0.4.4
         version: link:../vue
       eslint:
         specifier: ^8.57.0
         version: 8.57.1
-      typescript:
-        specifier: '>=4.9.5'
-        version: 4.9.5
-
-  packages/eslint-plugin-tsconfig-sort:
-    dependencies:
-      '@humanwhocodes/momoa':
-        specifier: ^3.3.6
-        version: 3.3.8
-      detect-indent:
-        specifier: ^7.0.1
-        version: 7.0.1
-      eslint:
-        specifier: '>=8.57.0'
-        version: 8.57.1
-      jsonc-parser:
-        specifier: ^3.3.1
-        version: 3.3.1
-      prettier:
-        specifier: '>=3.0.0'
-        version: 3.6.2
       typescript:
         specifier: '>=4.9.5'
         version: 4.9.5
@@ -124,9 +103,6 @@ importers:
       eslint-plugin-toml:
         specifier: ^0.11.0
         version: 0.11.1(eslint@8.57.1)
-      eslint-plugin-tsconfig-sort:
-        specifier: ^0.4.3
-        version: link:../eslint-plugin-tsconfig-sort
       eslint-plugin-unicorn:
         specifier: ^42.0.0
         version: 42.0.0(eslint@8.57.1)
@@ -164,7 +140,7 @@ importers:
         specifier: ^8.8.0
         version: 8.35.1(eslint@8.57.1)(typescript@4.9.5)
       '@viso/eslint-config-standard':
-        specifier: ^0.4.3
+        specifier: ^0.4.4
         version: link:../standard
       eslint:
         specifier: ^8.57.0
@@ -194,7 +170,7 @@ importers:
   packages/vue:
     dependencies:
       '@viso/eslint-config-standard':
-        specifier: ^0.4.3
+        specifier: ^0.4.4
         version: link:../standard
       eslint:
         specifier: ^8.16.0
@@ -538,14 +514,6 @@ packages:
         integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==
       }
     engines: { node: '>=12.22' }
-
-  /@humanwhocodes/momoa@3.3.8:
-    resolution:
-      {
-        integrity: sha512-/3PZzor2imi/RLLcnHztkwA79txiVvW145Ve2cp5dxRcH5qOUNJPToasqLFHniTfw4B4lT7jGDdBOPXbXYlIMQ==
-      }
-    engines: { node: '>=18' }
-    dev: false
 
   /@humanwhocodes/object-schema@2.0.3:
     resolution:
@@ -3078,14 +3046,6 @@ packages:
       }
     engines: { node: '>=4' }
     dev: true
-
-  /detect-indent@7.0.1:
-    resolution:
-      {
-        integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==
-      }
-    engines: { node: '>=12.20' }
-    dev: false
 
   /diff-sequences@29.6.3:
     resolution:
@@ -5714,13 +5674,6 @@ packages:
         integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==
       }
     dev: true
-
-  /jsonc-parser@3.3.1:
-    resolution:
-      {
-        integrity: sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==
-      }
-    dev: false
 
   /jsonfile@6.1.0:
     resolution:
