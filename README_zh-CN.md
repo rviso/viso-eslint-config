@@ -5,7 +5,7 @@
 ![npm](https://img.shields.io/npm/v/@viso/eslint-config)
 ![node](https://img.shields.io/badge/node-%5E18.0.0-bluegreen)
 ![author](https://img.shields.io/badge/author-lingann-purple)
-![license](https://img.shields.io/github/license/rviso/rviso-eslint)
+![license](https://img.shields.io/github/license/rviso/viso-eslint-config)
 
 ---
 
