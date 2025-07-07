@@ -2,7 +2,7 @@
   "name": "viso-eslint-config",
   "version": "1.0.0",
   "private": false,
-  "packageManager": "pnpm@8.1.0",
+  "packageManager": "pnpm@8.15.9",
   "author": "Lingann",
   "license": "MIT",
   "repository": {

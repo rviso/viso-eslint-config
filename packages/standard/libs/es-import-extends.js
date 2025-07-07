@@ -15,7 +15,11 @@ module.exports = {
       }
     }
   },
-  plugins: ['import-newlines', 'simple-import-sort', 'unused-imports'],
+  plugins: [
+    'import-newlines',
+    'simple-import-sort',
+    'unused-imports'
+  ],
   rules: {
     // -----------------------------------------------------
     // #region import 规则
